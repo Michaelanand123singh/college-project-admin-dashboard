@@ -9,7 +9,7 @@ import {
 import adminAPI from '../services/adminAPI';
 
 const StatCard = ({ title, value, icon: Icon, color }) => (
-  <div className="bg-white rounded-lg shadow p-6">
+  <div className="bg-white rounded-lg shadow p-6 h-full">
     <div className="flex items-center">
       <div className={`p-3 rounded-md ${color}`}>
         <Icon className="h-6 w-6 text-white" />
@@ -67,13 +67,13 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
-      <div className="mb-8">
+    <div className="space-y-6">
+      <div>
         <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
         <p className="text-gray-600">Overview of your store performance</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title="Total Products"
           value={stats.totalProducts}
@@ -100,20 +100,20 @@ const Dashboard = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Activity</h3>
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
               <span className="text-sm text-gray-600">New order received</span>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
               <span className="text-sm text-gray-600">Product updated</span>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></div>
               <span className="text-sm text-gray-600">New user registered</span>
             </div>
           </div>
@@ -122,13 +122,16 @@ const Dashboard = () => {
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
           <div className="space-y-3">
-            <button className="w-full text-left px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-md text-blue-700">
+            <button className="w-full flex items-center px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-md text-blue-700 transition-colors">
+              <ShoppingBagIcon className="h-5 w-5 mr-2" />
               Add New Product
             </button>
-            <button className="w-full text-left px-4 py-2 bg-green-50 hover:bg-green-100 rounded-md text-green-700">
+            <button className="w-full flex items-center px-4 py-2 bg-green-50 hover:bg-green-100 rounded-md text-green-700 transition-colors">
+              <ShoppingCartIcon className="h-5 w-5 mr-2" />
               View Orders
             </button>
-            <button className="w-full text-left px-4 py-2 bg-purple-50 hover:bg-purple-100 rounded-md text-purple-700">
+            <button className="w-full flex items-center px-4 py-2 bg-purple-50 hover:bg-purple-100 rounded-md text-purple-700 transition-colors">
+              <UsersIcon className="h-5 w-5 mr-2" />
               Manage Users
             </button>
           </div>

@@ -35,25 +35,22 @@ const Sidebar = ({ open, setOpen }) => {
       
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg
-        transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
         ${open ? 'translate-x-0' : '-translate-x-full'}
-        lg:translate-x-0 lg:static lg:inset-auto lg:h-screen
-        flex flex-col
+        lg:translate-x-0 lg:static lg:inset-0
       `}>
-        <div className="flex items-center justify-between h-16 px-4 border-b flex-shrink-0">
+        <div className="flex items-center justify-between h-16 px-4 border-b">
           <h1 className="text-xl font-bold text-gray-800">Admin Panel</h1>
           <button 
             onClick={() => setOpen(false)}
-            className="lg:hidden"
-            aria-label="Close sidebar"
+            className="lg:hidden text-gray-500 hover:text-gray-700"
           >
-            <XMarkIcon className="h-6 w-6 text-gray-700" />
+            <XMarkIcon className="h-6 w-6" />
           </button>
         </div>
         
-        <nav className="mt-8 flex-1 overflow-auto">
-          <div className="px-4 space-y-2">
+        <nav className="mt-8">
+          <div className="px-4 space-y-1">
             {navigation.map((item) => {
               const isActive = location.pathname === item.href;
               return (
@@ -61,15 +58,15 @@ const Sidebar = ({ open, setOpen }) => {
                   key={item.name}
                   to={item.href}
                   className={`
-                    flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors
+                    flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors
                     ${isActive 
-                      ? 'bg-blue-100 text-blue-700' 
+                      ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-600' 
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                     }
                   `}
                   onClick={() => setOpen(false)}
                 >
-                  <item.icon className="mr-3 h-5 w-5 flex-shrink-0" />
+                  <item.icon className={`mr-3 h-5 w-5 ${isActive ? 'text-blue-600' : 'text-gray-400'}`} />
                   {item.name}
                 </Link>
               );

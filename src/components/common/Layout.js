@@ -8,15 +8,18 @@ const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
       
-      {/* Main content wrapper */}
-      <div className="flex flex-col flex-1 lg:ml-64 min-h-screen">
+      {/* Main content area */}
+      <div className="flex-1 flex flex-col overflow-hidden">
         <Header onMenuClick={() => setSidebarOpen(true)} />
         
-        <main className="flex-1 p-6 overflow-auto">
-          <Outlet />
+        {/* Main content */}
+        <main className="flex-1 overflow-y-auto p-4 md:p-6">
+          <div className="max-w-7xl mx-auto">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>
