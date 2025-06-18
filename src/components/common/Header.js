@@ -1,23 +1,33 @@
+// src/components/common/Header.js - Modified to remove auth dependencies
 import React from 'react';
-import { useAdminAuth } from '../../context/AdminAuthContext';
+import { Bars3Icon, BellIcon } from '@heroicons/react/24/outline';
 
-const Header = () => {
-  const { user, logout } = useAdminAuth();
-
+const Header = ({ onMenuClick }) => {
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-gray-800">
-          Welcome back, {user?.name || 'Admin'}
-        </h2>
-        <div className="flex items-center space-x-4">
-          <span className="text-sm text-gray-600">{user?.email}</span>
+    <header className="bg-white shadow-sm border-b">
+      <div className="flex items-center justify-between px-6 py-4">
+        <div className="flex items-center">
           <button
-            onClick={logout}
-            className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700 transition-colors"
+            onClick={onMenuClick}
+            className="lg:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100"
           >
-            Logout
+            <Bars3Icon className="h-6 w-6" />
           </button>
+          <h2 className="ml-4 text-lg font-semibold text-gray-800 lg:ml-0">
+            Admin Dashboard
+          </h2>
+        </div>
+        
+        <div className="flex items-center space-x-4">
+          <button className="p-2 rounded-md text-gray-600 hover:bg-gray-100">
+            <BellIcon className="h-6 w-6" />
+          </button>
+          
+          <div className="relative">
+            <div className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md">
+              <span>Administrator</span>
+            </div>
+          </div>
         </div>
       </div>
     </header>
